@@ -1,78 +1,73 @@
-#include<stdio.h>
-#include<stdlib.h>
-int MAX_SIZE 10;
+#include <stdio.h>
+#define MAXSIZE 10
+int stack[MAXSIZE], top=-1;
 
-int stack[MAX_SIZE],top=-1;
-
-int isFull()
-{
-	
-	
-	return (top==MAX_SIZE-1)?1:-1;
-
+int isfull()
+{ //returns 1 if stack is full else -1
+	if(top==(MAXSIZE-1))
+		return 1;
+	else
+		return-1;
 }
-int isEmpty()
-{
 
-return(top==-1)?1:-1;
+int isempty()
+{//returns 1 if stack is full else -1
+	if (top==-1)
+		return 1;
+	else
+		return -1;
 }
 
 int peek()
+{//returns the element at the top of the stack
+	return stack[top];
+}
+
+int push(int e)
+{  //inserts an element in the stack
+	if(isfull()==1)
+		printf("STACK OVERFLOW\n");
+	else
+	{
+		stack[++top]=e;
+		printf("element successfully inserted\n");
+	}
+}
+
+void pop()
+{  //deletes an element from the stack
+	if(isempty()==1)
+		printf("STACK UNDERFLOW\n");
+	else
+	{
+		int d=stack[top--];
+		printf("%d successfully deleted\n",d);
+	}
+}
+
+int main()
 {
-//return element at the top of stack
+    int ch,e;
+    do
+    {
+        printf("\n\tMENU\n1.PEEK\n2.POP\n3.PUSH\n4.EXIT\nEnter your choice:");
+        scanf("%d",&ch);
+        switch(ch)
+        {
+            case 1:printf("the topmost element is:%d",peek());
+                   break;
+            case 2:pop();
+                   break;
+            case 3:printf("\nenter the element to be pushed:");
+                   scanf("%d",&e);
+                   push(e);
+                   break;
+            case 4:return 0;
+        }
+    }while(1);
+    return 0;
 }
 
-void push(int e){
-//inserts an element into stack
-	if()
-	{
-		e++;
-		printf("%d",);
-		PRINTF("ENTER NO IS SUCCESSFULLY INSERTED INSTACK");
-	}
-	else{
-		printf("stack is full");
-	}
-}
 
-void pop(){
-//deletes an element from top of stack
-	int d;
-	if(whether the stack is not empty)
-	{
-		//d=top of stack
-		//decrement the top
-		//msg element d successfully deleted
-	}
-	else{
-		//msg stack underflow
-	}
-}
 
-int main(){
-	int choice,e;
-	do
-	{
-		//display menu 1.peek 2.push 3.pop 4.exit
-		printf("enter your choice");
-		scanf("%d"&choice);
-		//take input in choice variable
-		switch(choice){
-			case 1:
-				peek=peek(e);
-				break;
-			case 2:
-				push=push(e);
-				break;
-			case 3:
-				pop=pop(e);
-				break;
-			case 4:
-				
-				break;
-			default:
-				//invalid choice				
-		}
-	}while(1);
-	return 0;
-}
+
